@@ -3,80 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Ofertas del Día</title>
+    <title>🔥 Ofertas Apple y Samsung del Día | Encuentra las mejores ofertas en Amazon</title>
+    <meta name="description" content="Descubre las ofertas limitadas del día en Samsung Galaxy S26 Ultra, iPhone 15 Pro Max, AirPods y accesorios en Amazon.">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
         body {
-            font-family: Arial, sans-serif;
-            margin:0;
-            padding:0;
-            background:#f8f8f8;
+            background: linear-gradient(135deg,#0c0820,#1b1438,#10203a);
+            color: #ffffff;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-in-out;
+            position: relative;
+            overflow-x: hidden;
         }
-        header {
-            background:#ff4500;
-            color:white;
+        @keyframes fadeIn {
+            from {opacity:0;transform:translateY(12px)}
+            to {opacity:1;transform:translateY(0)}
+        }
+        @keyframes neonPulse {
+            0%,100% {background: linear-gradient(135deg,#7b2cbf,#3a7bff,#5b21b6); box-shadow:0 0 30px rgba(123,44,191,0.55)}
+            50% {background: linear-gradient(135deg,#9d4edd,#4d8cff,#7b2cbf); box-shadow:0 0 40px rgba(157,78,221,0.7)}
+        }
+        .particula {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(180,140,255,0.4);
+            animation: flotar 12s infinite ease-in-out;
+            z-index: 0;
+        }
+        @keyframes flotar {
+            0% {transform:translateY(0) translateX(0); opacity:0.4;}
+            50% {transform:translateY(-30px) translateX(15px); opacity:0.7;}
+            100% {transform:translateY(0) translateX(0); opacity:0.4;}
+        }
+        .bannerOferta {
+            animation: neonPulse 2.4s ease-in-out infinite;
+            padding:18px;
             text-align:center;
-            padding:20px;
+            border-radius:16px;
+            margin-bottom:20px;
+            position: relative;
+            z-index: 1;
         }
-        .container {
-            max-width:1000px;
-            margin:30px auto;
-            padding:0 20px;
+        .bannerOferta h2 {
+            font-size:26px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+            margin-bottom:8px;
         }
-        .oferta {
-            background:white;
-            padding:20px;
-            margin:15px 0;
-            border-radius:8px;
-        }
-        .precio {
-            color:#ff4500;
+        .contador {
             font-size:22px;
             font-weight:bold;
+            color:#fff;
+        }
+        header {
+            background: linear-gradient(135deg,#7b2cbf,#3a7bff,#5b21b6);
+            padding:32px 20px;
+            text-align:center;
+            border-radius:20px;
+            margin-bottom:35px;
+            box-shadow:0 0 25px rgba(123,44,191,0.45);
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            font-size:30px;
+            margin-bottom:10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header p {
+            font-size:17px;
+            opacity:0.95;
+        }
+        .container {
+            max-width:1020px;
+            margin:0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .categoria {
+            color:#b8a2ff;
+            font-size:24px;
+            margin:30px 0 18px;
+            border-left:5px solid #7b2cbf;
+            padding-left:14px;
+            text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .oferta {
+            background:linear-gradient(145deg,#1f1b35,#252a48);
+            border-radius:18px;
+            padding:26px;
+            margin-bottom:24px;
+            box-shadow:0 8px 22px rgba(80,50,150,0.35);
+            transition: all 0.3s ease;
+            position:relative;
+        }
+        .etiquetaDescuento {
+            position:absolute;
+            top:12px;
+            right:12px;
+            background:#ff3366;
+            color:white;
+            padding:6px 10px;
+            border-radius:8px;
+            font-size:13px;
+            font-weight:bold;
+        }
+        .oferta:hover {
+            transform:translateY(-5px);
+            box-shadow:0 14px 32px rgba(120,90,220,0.3);
+        }
+        .oferta h2 {
+            font-size:21px;
+            margin-bottom:12px;
+            color:#fff;
+            padding-right:70px;
+        }
+        .oferta p {
+            color:#d1d5db;
+            margin-bottom:12px;
+            line-height:1.6;
+        }
+        .precio {
+            color:#ff9f43;
+            font-size:24px;
+            font-weight:bold;
+            margin:16px 0;
+            text-shadow:1px 1px 2px rgba(0,0,0,0.2);
         }
         .boton {
             display:inline-block;
-            background:#ff4500;
-            color:white;
-            padding:10px 20px;
-            border-radius:5px;
+            background:linear-gradient(135deg,#7b2cbf,#3a7bff);
+            color:#ffffff;
+            padding:14px 26px;
+            border-radius:12px;
             text-decoration:none;
+            font-weight:bold;
+            box-shadow:0 5px 15px rgba(123,44,191,0.35);
+            transition: all 0.25s ease;
+        }
+        .boton:hover {
+            transform: translateY(-2px);
+            box-shadow:0 8px 20px rgba(123,44,191,0.5);
+        }
+        .boton:active {
+            transform: translateY(1px);
         }
         .aviso {
-            background:#eef;
-            padding:15px;
-            border-radius:8px;
-            margin:30px 0;
+            background:#181430;
+            border:1px solid #302b52;
+            padding:20px;
+            border-radius:14px;
+            margin-top:35px;
             font-size:14px;
+            color:#d1d5db;
         }
     </style>
 </head>
 <body>
+    <!-- Partículas -->
+    <div class="particula" style="width:12px;height:12px;left:5%;top:10%;animation-delay:0s;"></div>
+    <div class="particula" style="width:18px;height:18px;left:20%;top:30%;animation-delay:2s;"></div>
+    <div class="particula" style="width:10px;height:10px;left:40%;top:15%;animation-delay:4s;"></div>
+    <div class="particula" style="width:14px;height:14px;left:60%;top:40%;animation-delay:6s;"></div>
+    <div class="particula" style="width:16px;height:16px;left:80%;top:20%;animation-delay:8s;"></div>
+    <div class="particula" style="width:11px;height:11px;left:30%;top:70%;animation-delay:1s;"></div>
+    <div class="particula" style="width:15px;height:15px;left:70%;top:80%;animation-delay:3s;"></div>
+
+    <div class="bannerOferta">
+        <h2>🔥 OFERTA LIMITADA – SOLO HOY 🔥</h2>
+        <div class="contador" id="contador"></div>
+    </div>
     <header>
-        <h1>🔥 Ofertas del Día 🔥</h1>
-        <p>Las mejores ofertas actualizadas cada día</p>
+        <h1>🔥 Ofertas Apple y Samsung del Día</h1>
+        <p>Las mejores ofertas en tecnología directamente en Amazon</p>
     </header>
     <div class="container">
+        <!-- Categoría Samsung -->
+        <h2 class="categoria">🟦 Productos Samsung</h2>
         <div class="oferta">
-            <h2>Producto 1 - Celular</h2>
-            <p>Celular de última generación con gran descuento</p>
-            <p class="precio">$XX.XX</p>
-            <a href="ENLACE_AMAZON_1" class="boton">Ver en Amazon</a>
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>📱 Samsung Galaxy S26 Ultra Negro 256 GB</h2>
+            <p>El nuevo buque insignia con Galaxy AI, S Pen integrado y cámara avanzada</p>
+            <p class="precio">💸 US$1.144,22 (sujeto a cambios)</p>
+            <a href="PEGA_ENLACE_AFILIADO_S26ULTRA" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
         </div>
         <div class="oferta">
-            <h2>Producto 2 - Auriculares</h2>
-            <p>Auriculares inalámbricos con cancelación de ruido</p>
-            <p class="precio">$XX.XX</p>
-            <a href="ENLACE_AMAZON_2" class="boton">Ver en Amazon</a>
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>🎧 Samsung Galaxy Buds3 Pro</h2>
+            <p>Auriculares Bluetooth 5.4 con ANC, resistencia al agua, interpretación en tiempo real por IA y sonido Hi‑Fi</p>
+            <p class="precio">💸 US$134,39 (sujeto a cambios)</p>
+            <a href="PEGA_ENLACE_AFILIADO_BUDS3PRO" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
         </div>
         <div class="oferta">
-            <h2>Producto 3 - Cargador</h2>
-            <p>Cargador rápido compatible con varios dispositivos</p>
-            <p class="precio">$XX.XX</p>
-            <a href="ENLACE_AMAZON_3" class="boton">Ver en Amazon</a>
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>🔋 Samsung Cargador Inalámbrico para Coche EP‑H5300 Negro</h2>
+            <p>Carga rápida inalámbrica compatible con dispositivos Qi para tu vehículo</p>
+            <p class="precio">💸 US$27,16 (sujeto a cambios)</p>
+            <a href="PEGA_ENLACE_AFILIADO_CARGADOR" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
         </div>
+        <!-- Categoría Apple -->
+        <h2 class="categoria">🍎 Productos Apple</h2>
+        <div class="oferta">
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>📱 Apple iPhone 15 Pro Max 256 GB – Blanco Titanio (Bloqueado T‑Mobile, Renewed)</h2>
+            <p>Smartphone de alta gama con procesador A17 Pro y pantalla Super Retina XDR</p>
+            <p class="precio">💸 ARS 917.325,83 (sujeto a cambios y sin envío garantizado)</p>
+            <a href="PEGA_ENLACE_AFILIADO_IPHONE" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
+        </div>
+        <div class="oferta">
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>🎧 Apple AirPods Pro 3</h2>
+            <p>Auriculares inalámbricos con cancelación activa de ruido y audio espacial</p>
+            <p class="precio">💸 Actualiza el precio desde Amazon</p>
+            <a href="PEGA_ENLACE_AFILIADO_AIRPODSPRO3" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
+        </div>
+        <div class="oferta">
+            <span class="etiquetaDescuento">¡OFERTA!</span>
+            <h2>🎧 Apple AirPods Max – Rosa (Reacondicionado Good)</h2>
+            <p>Auriculares de diadema con cancelación activa de ruido y audio espacial</p>
+            <p class="precio">💸 ARS 465.839,76 (sujeto a cambios y sin envío garantizado)</p>
+            <a href="PEGA_ENLACE_AFILIADO_AIRPODSMAX" class="boton" target="_blank" rel="sponsored">👉 Ver en Amazon</a>
+        </div>
+        <!-- Aviso Afiliado -->
         <div class="aviso">
-            <p><strong>Aviso afiliado:</strong> Podemos recibir una comisión si compras a través de estos enlaces sin costo adicional para ti. Los precios y ofertas pueden variar.</p>
+            <p><strong>Aviso Afiliado:</strong> Como Amazon Associate, gano comisiones por compras calificadas realizadas a través de estos enlaces. El contador y partículas son estético; no garantiza que la oferta termine a medianoche ni que el stock se agote. Los precios y disponibilidad cambian sin previo aviso.</p>
         </div>
     </div>
+    <script>
+        function iniciarContador() {
+            const ahora = new Date();
+            const medianoche = new Date(ahora);
+            medianoche.setHours(24,0,0,0);
+            function actualizar() {
+                const ahora2 = new Date();
+                const restante = medianoche.getTime() - ahora2.getTime();
+                if(restante <=0) {
+                    document.getElementById("contador").innerText = "⏰ ¡La oferta terminó!";
+                    return;
+                }
+                const horas = Math.floor(restante/(1000*60*60));
+                const minutos = Math.floor((restante%(1000*60*60))/(1000*60));
+                const segundos = Math.floor((restante%(1000*60))/1000);
+                document.getElementById("contador").innerText = `⏱️ Quedan: ${horas.toString().padStart(2,'0')}:${minutos.toString().padStart(2,'0')}:${segundos.toString().padStart(2,'0')}`;
+            }
+            actualizar();
+            setInterval(actualizar,1000);
+        }
+        iniciarContador();
+    </script>
 </body>
 </html>
